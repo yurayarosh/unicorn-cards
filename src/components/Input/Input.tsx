@@ -31,6 +31,13 @@ const Input: FC<IInput> = props => {
     [hasFocus, hasText]
   )
 
+  useEffect(() => {
+    if (value !== inputValue) {
+      setValue(inputValue)
+      setHasText(!!inputValue)
+    }
+  }, [inputValue])
+
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
     onChange?.(e)
